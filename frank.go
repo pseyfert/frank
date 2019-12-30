@@ -129,6 +129,7 @@ func main() {
 	ListenerAdd("karma", runnerKarma)
 	ListenerAdd("invite", runnerInvite)
 	ListenerAdd("lmgtfy", runnerLmgtfy)
+	ListenerAdd("emoji", emojiSpellout)
 	ListenerAdd("urifind", runnerUrifind)
 	ListenerAdd("raumbang", runnerRaumbang)
 	ListenerAdd("greeter", runnerGreet)
