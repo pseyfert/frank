@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	emojispeller "github.com/pseyfert/go-terminal-speller/pkg"
 	"gopkg.in/sorcix/irc.v2"
@@ -16,13 +15,9 @@ func emojiSpellout(parsed *irc.Message) error {
 		return nil
 	}
 
-	var b bytes.Buffer
-
-	translator := emojispeller.NewTranslator(&b)
-	translator.Write([]byte(msg))
-
-	if translator.Didsomething {
-		Privmsg(tgt, fmt.Sprintf("[DEmojified] %s", b.String()))
+	translation, err := emojispeller.StringForceTranslate(msg)
+	if err == nil {
+		Privmsg(tgt, fmt.Sprintf("[DEmojified] %s", translation))
 	}
 
 	return nil
